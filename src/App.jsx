@@ -1,16 +1,24 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CheckBox from "./components/CheckBox.jsx";
 import Formulaire from "./components/Formulaire.jsx";
 import Titre from "./components/Titre.jsx";
 
 function App() {
-      const [tasks, setTasks] = useState([
+      const [tasks, setTasks] = useState(() => {
+        const sauvegardeTasks = localStorage.getItem("tasks");
+        return sauvegardeTasks ? JSON.parse(sauvegardeTasks) : 
+        [
         { id: 1, name: "Faire les courses", checked: false },
         { id: 2, name: "Apprendre React", checked: false },
         { id: 3, name: "Préparer la présentation", checked: false },
         { id: 4, name: "Réviser Javascript", checked: false },
-      ]);
+      ];
+      });
+
+      useEffect(() => {
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+      }, [tasks]); // le 2ème argument [tasks] est là pour indiquer a useEffect sur quoi il doit agir
       
   const handleClick = (id) => {
     setTasks(
