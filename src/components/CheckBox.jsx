@@ -1,8 +1,6 @@
 import { X, Clipboard } from "lucide-react";
 
-function CheckBox({ afficherTache, handleClick }) {
-  console.log(afficherTache);
-
+function CheckBox({ afficherTache, handleClick, supprimerTache }) {
   if (afficherTache.length === 0) {
     return (
       <div className="min-h-screen w-screen md:w-full flex flex-col justify-center items-center gap-3">
@@ -49,7 +47,13 @@ function CheckBox({ afficherTache, handleClick }) {
                 </label>
               </div>
 
-              <button className="p-2 text-center text-red-500 hover:bg-red-50 hover:text-red-700 rounded-lg">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  supprimerTache(task.id);
+                }}
+                className="p-2 text-center text-red-500 hover:bg-red-50 hover:text-red-700 rounded-lg"
+              >
                 <X />
               </button>
             </li>

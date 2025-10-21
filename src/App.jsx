@@ -40,6 +40,11 @@ function App() {
         setTasks([...tasks, nouvelleTache]);
       }
 
+      const supprimerTache = (id) => {
+        const tacheASupprimer = tasks.filter(task => task.id !== id);
+        setTasks(tacheASupprimer);
+      }
+
   return (
     <div
       className="p-6 lg:m-6 w-screen lg:w-4/5 h-full
@@ -48,7 +53,11 @@ function App() {
     >
       <Titre />
       <Formulaire onAddTask={ajouterTache} />
-      <CheckBox afficherTache={tasks} handleClick={handleClick} />
+      <CheckBox
+        afficherTache={tasks}
+        handleClick={handleClick}
+        supprimerTache={supprimerTache}
+      />
     </div>
   );
 }
