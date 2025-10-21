@@ -1,6 +1,6 @@
 function Formulaire() {
 return (
-  <div className="form m-6 w-full">
+  <div className="form p-6 w-screen lg:w-full">
     <form className="pl-6 pr-6 flex flex-row justify-between gap-3">
       <input
         type="text"
@@ -10,14 +10,14 @@ return (
         placeholder="Ajouter une nouvelle tâche..."
       />
       <button
-        className=" hidden sm:block
+        className=" hidden lg:block
       form-btn bg-blue-500 hover:bg-blue-600 hover:shadow-lg text-white text-xl font-semibold w-1/4 p-4 rounded-lg"
       >
         Ajouter
       </button>
 
       <button
-        className="block sm:hidden
+        className="block lg:hidden
       form-btn bg-blue-500 hover:bg-blue-600 hover:shadow-lg text-white text-xl font-semibold w-1/4 p-4 rounded-lg"
       >
         +

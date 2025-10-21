@@ -6,9 +6,9 @@ import Titre from "./components/Titre.jsx";
 function App() {
   return (
     <div
-      className="p-6 m-6 sm:w-1/2 
+      className="p-6 lg:m-6 w-screen lg:w-4/5 h-full
       flex flex-col justify-center items-center gap-3 
-      sm:border-4 sm:rounded-lg sm:border-gray-300 font-sans"
+      lg:border-4 lg:rounded-lg lg:border-gray-300 font-sans"
     >
       <Titre />
       <Formulaire />

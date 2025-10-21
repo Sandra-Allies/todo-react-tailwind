@@ -16,14 +16,12 @@ function CheckBox() {
         )
         );
     };
-  // création d'un statut Checked true ou false
-  // au click si isChecked et true alors on applique les class en lien avec la task coché
-  // si isChecked est false on ne met aucune class en plus
+
 
   if (tasks.length === 0) {
-    console.log("fonction tâche vide appelé");
+
     return (
-      <div className="min-h-screen w-screen sm:w-full flex flex-col justify-center items-center gap-3">
+      <div className="min-h-screen w-screen md:w-full flex flex-col justify-center items-center gap-3">
         <div className="text-gray-300 pb-3">
           <Clipboard size={160} />
         </div>
@@ -37,7 +35,7 @@ function CheckBox() {
 //   console.log([tasks]);
 else {
 return (
-  <div className="min-h-screen w-screen sm:w-full">
+  <div className="min-h-screen w-screen md:w-full">
     <ul className="flex flex-col gap-3 justify-center items-center">
       {tasks.map((task) => (
         <li
