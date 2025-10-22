@@ -1,6 +1,26 @@
 import { X, Clipboard } from "lucide-react";
 
-function CheckBox({ afficherTache, handleClick, supprimerTache }) {
+function CheckBox({
+  afficherTache,
+  handleClick,
+  supprimerTache,
+  tasks,
+  filtre,
+  setFiltre,
+}) 
+{
+  const counts = {
+    toutes: tasks.length,
+    afaire: tasks.filter((t) => !t.checked).length,
+    terminees: tasks.filter((t) => t.checked).length,
+  };
+
+  const labels = {
+    toutes: "Toute",
+    afaire: "A faire",
+    terminees: "Terminées",
+  };
+
   if (afficherTache.length === 0) {
     return (
       <div className="min-h-screen w-screen md:w-full flex flex-col justify-center items-center gap-3">
@@ -16,7 +36,23 @@ function CheckBox({ afficherTache, handleClick, supprimerTache }) {
   } else {
     return (
       <div className="min-h-screen w-screen md:w-full">
-        <ul className="flex flex-col gap-3 justify-center items-center">
+        <div className="btn-filtre p-4 flex flex-row justify-between item-center gap-3">
+          {["toutes", "afaire", "terminees"].map((type) => (
+            <button
+              key={type}
+              onClick={() => setFiltre(type)}
+              className={`font-semibold text-lg w-1/3 p-2 rounded-lg 
+              ${
+                filtre === type
+                  ? "bg-blue-500 text-white"
+                  : "bg-gray-200 hover:bg-gray-300"
+              }`}
+            >
+              {labels[type]} ({counts[type]})
+            </button>
+          ))}
+        </div>
+        <ul className="p-4 flex flex-col gap-3 justify-center items-center">
           {afficherTache.map((task) => (
             <li
               key={task.id}
@@ -24,7 +60,7 @@ function CheckBox({ afficherTache, handleClick, supprimerTache }) {
               className={`border border-2 border-gray-100 rounded-lg 
             w-full 
             flex flex-row gap-3 
-            p-5 justify-between text-lg
+            p-2 justify-between text-lg
             box-border
             hover:border-2
             hover:shadow-md
